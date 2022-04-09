@@ -16,6 +16,7 @@ export class HomePageComponent implements OnInit {
   fields: FormlyFieldConfig[] = [
     {
       key: 'state',
+      className: "FormField",
       type: 'select',
       templateOptions: {
         label: 'Choose your State',
@@ -28,6 +29,7 @@ export class HomePageComponent implements OnInit {
     },
     {
       key: 'field_of_study',
+      className: "FormField",
       type: 'select',
       templateOptions: {
         label: 'Choose your Field of Study',
