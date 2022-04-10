@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 
+import { HttpClient } from '@angular/common/http';
+
 @Injectable({
   providedIn: 'root'
 })
 export class CareerAndMeApiService {
+  readonly BASE_URL:string = "http://localhost:5000";
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 }
