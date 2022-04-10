@@ -35,3 +35,9 @@ def majors_for_fields_of_study():
     results = db.engine.execute(sql)
     majors_list = list(map(lambda result: result[0], list(results)))
     return jsonify(majors_list)
+
+@app.route('/occupations-for-fields-of-study')
+def occupations_for_fields_of_study():
+    field_of_study = request.args.get('field')
+    
+    #TODO
