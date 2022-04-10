@@ -1,4 +1,7 @@
+from dataclasses import field
+import json
 from flask import Flask
+from flask import request
 from flask import jsonify
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import text
@@ -24,3 +27,11 @@ def fields_of_study():
     fields_list = list(map(lambda result: result[0], list(results)))
     print(fields_list)
     return jsonify(fields_list)
+
+@app.route('/majors-for-fields-of-study')
+def majors_for_fields_of_study():
+    field_of_study = request.args.get('field')
+    sql = text(f'select * FROM "college-majors-by-field-of-study" WHERE "Field of Study" = "{field_of_study}";')
+    results = db.engine.execute(sql)
+    majors_list = list(map(lambda result: result[0], list(results)))
+    return jsonify(majors_list)
